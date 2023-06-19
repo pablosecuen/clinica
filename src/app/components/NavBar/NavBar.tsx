@@ -172,7 +172,7 @@ function NavBar() {
         <>
           <div className="absolute inset-0 flex items-center z-40 justify-center bg-black/60"></div>
           <div className="modal-overlay z-50">
-            <div className="modal absolute inset-0 flex items-center z-50 justify-center  h-screeng ">
+            <div className="modal absolute inset-0 flex items-center z-50 justify-center  h-screen ">
               <Login closeModal={closeModal} />
               <div
                 className="absolute inset-0 flex items-center z-40 justify-center "

@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
+// import dayGridPlugin from "@fullcalendar/daygrid";
+// import timeGridPlugin from "@fullcalendar/timegrid";
 
-const FullCalendar = dynamic(() => import("@fullcalendar/react"), { ssr: false });
+// const FullCalendar = dynamic(() => import("@fullcalendar/react"), { ssr: false });
 
 type Appointment = {
   title: string;
@@ -62,14 +62,14 @@ function Dashboard() {
     <div className="bg-blue-900 h-screen">
       <h1>Dashboard</h1>
       <div className="flex justify-center items-start w-1/2 h-full border-2">
-        <FullCalendar
+        {/* <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin]}
           initialView="timeGridWeek"
           selectable={true}
           select={handleDateSelect}
           events={appointments}
           eventContent={renderEventContent}
-        />
+        /> */}
       </div>
     </div>
   );
