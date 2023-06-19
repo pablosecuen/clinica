@@ -9,6 +9,8 @@ function NavBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [userData, setUserData] = useState<{ name: string; lastName: string } | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -47,21 +49,37 @@ function NavBar() {
     fetchUserData();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.pageYOffset;
+      setScrollPosition(currentPosition);
+      setIsScrolled(currentPosition > 70);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav className="border-gray-200 flex justify-between w-full bg-transparent px-4">
+      <nav
+        className={`border-gray-200 flex justify-between w-screen px-4 z-50 fixed -top-0 ${
+          isScrolled ? "bg-slate-100 transition duration-700" : ""
+        }`}
+      >
         <div className="max-w-screen-xl flex flex-row-reverse flex-wrap items-center justify-between w-full mx-auto p-4">
           <a href="https://flowbite.com/" className="flex items-center">
-            <Image
+            {/* <Image
               width={100}
               height={100}
               src="https://flowbite.com/docs/images/logo.svg"
               className="h-8 mr-3"
               alt="Flowbite Logo"
-            />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
-            </span>
+            /> */}
+            <span className="self-center text-2xl  whitespace-nowrap dark:text-white">Clinica</span>
           </a>
           <button
             data-collapse-toggle="navbar-default"
@@ -86,11 +104,13 @@ function NavBar() {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border text-lg border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-gray-700">
+            <ul className="font-light flex flex-col p-4 md:p-0 mt-4 border text-lg border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-gray-700">
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-white hover:text-blue-700 bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0  ${
+                    isScrolled ? "text-blue-600" : "dark:text-white md:dark:text-white"
+                  }`}
                   aria-current="page"
                 >
                   Home
@@ -99,7 +119,10 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0  ${
+                    isScrolled ? "text-blue-600" : "dark:text-white md:dark:text-white"
+                  }`}
+                  aria-current="page"
                 >
                   About
                 </a>
@@ -107,7 +130,9 @@ function NavBar() {
               <li>
                 <button
                   onClick={handleIngresarClick}
-                  className="block py-2 pl-3 pr-4 text-gray-900 cursor-pointer rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0  ${
+                    isScrolled ? "text-blue-600" : "dark:text-white md:dark:text-white"
+                  }`}
                 >
                   Ingresar
                 </button>
@@ -115,7 +140,9 @@ function NavBar() {
               <li>
                 <button
                   onClick={handleRegistrarClick}
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0  ${
+                    isScrolled ? "text-blue-600" : "dark:text-white md:dark:text-white"
+                  }`}
                 >
                   Registrarse
                 </button>
@@ -123,7 +150,9 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 pl-3 pr-4 rounded md:p-0  ${
+                    isScrolled ? "text-blue-600" : "dark:text-white md:dark:text-white"
+                  }`}
                 >
                   Contact
                 </a>
@@ -141,30 +170,28 @@ function NavBar() {
       </nav>
       {isModalOpen && (
         <>
-          <div
-            className="absolute inset-0 flex items-center z-30 justify-center bg-black/60"
-            onClick={closeModal}
-          ></div>
+          <div className="absolute inset-0 flex items-center z-40 justify-center bg-black/60"></div>
           <div className="modal-overlay z-50">
-            <div className="modal">
-              <div className="absolute inset-0 flex items-center z-20 justify-center ">
-                <Login closeModal={closeModal} />
-              </div>
+            <div className="modal absolute inset-0 flex items-center z-50 justify-center  h-screeng ">
+              <Login closeModal={closeModal} />
+              <div
+                className="absolute inset-0 flex items-center z-40 justify-center "
+                onClick={closeModal}
+              ></div>
             </div>
           </div>
         </>
       )}
       {isModalOpen2 && (
         <>
-          <div
-            className="absolute inset-0 flex items-center z-30 justify-center bg-black/60"
-            onClick={closeModal2}
-          ></div>
+          <div className="absolute inset-0 flex items-center z-40 justify-center h-screen bg-black/60"></div>
           <div className="modal-overlay z-50">
-            <div className="modal">
-              <div className="absolute inset-0 flex items-center z-20 justify-center ">
-                <Register closeModal2={closeModal2} />
-              </div>
+            <div className="modal absolute inset-0 flex items-center z-50 justify-center h-screen ">
+              <Register closeModal2={closeModal2} />
+              <div
+                className="absolute inset-0 flex items-center z-40 justify-center "
+                onClick={closeModal2}
+              ></div>
             </div>
           </div>
         </>

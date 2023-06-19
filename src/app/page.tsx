@@ -2,20 +2,23 @@ import Image from "next/image";
 import landingbg from "../assets/2x/landing.png";
 import aboutbg from "../assets/2x/aboutbg.webp";
 import calendarbg from "../assets/2x/calendarbg.webp";
-
+import recurso1 from "../assets/2x/recurso1.png";
+import recurso2 from "../assets/2x/recurso2.png";
+import recurso3 from "../assets/2x/recurso3.png";
+import recurso4 from "../assets/2x/recurso4.png";
 
 // import Image from "next/image";
-import NavBar from "./components/NavBar/NavBar";
+
 import Turnero from "./components/Turnero/Turnero";
 import Footer from "./components/Footer/Footer";
+import NavBar from "./components/NavBar/NavBar";
 
 export default function Home() {
   return (
-    <main className="flex w-full z-30 relative min-h-screen flex-col items-center justify-between p-24">
-    
-      <header className="h-[700px] relative flex flex-col  overflow-hidden bg-menu rounded-[4%] w-full max-w-7xl items-center  font-mono text-sm text-black lg:flex shadow-2xl shadow-black">
-        <NavBar />
-        <aside className=" self-start pl-8 mt-24">
+    <main className="flex  w-full z-30 relative  flex-col items-center justify-between p-24">
+      <NavBar />
+      <header className="h-[700px] mt-24 relative flex flex-col   bg-menu rounded-[4%] w-full max-w-7xl items-center  font-mono text-sm text-black lg:flex shadow-2xl shadow-black">
+        <aside className=" self-start pl-32 mt-24">
           <h1 className="text-6xl font-quicksand">
             <p>MENTAL</p>
             <p className="text-white">HEALTH</p>
@@ -35,10 +38,42 @@ export default function Home() {
           src={landingbg}
           className="w-full absolute  object-cover -z-10 h-full "
         ></Image>
+
+        <Image
+          width={100}
+          height={100}
+          alt="bubble"
+          src={recurso1}
+          className="w-48 absolute z-10 right-96 -top-12  drop-shadow-2xl shadow-black/100"
+        ></Image>
+
+        <Image
+          width={1000}
+          height={1000}
+          alt="bubble"
+          src={recurso2}
+          className="w-96 absolute z-10 -right-24 top-64 drop-shadow-2xl shadow-black/100"
+        ></Image>
+
+        <Image
+          width={1000}
+          height={1000}
+          alt="bubble"
+          src={recurso3}
+          className="w-[450px] absolute z-10 -bottom-8 -left-36 drop-shadow-2xl shadow-black/100"
+        ></Image>
+
+        <Image
+          width={1000}
+          height={1000}
+          alt="bubble"
+          src={recurso4}
+          className="w-96 absolute -z-20 -top-16 -left-24  drop-shadow-2xl shadow-black/100"
+        ></Image>
       </header>
 
       <section className="relative w-full 2xl:w-10/12 -z-20">
-        <article className="h-[500px] -z-10 top-48 right-0 justify-center  absolute  mt-36 ml-10 flex-col self-end  overflow-hidden bg-menu rounded-[4%] lg:w-[500px] xl:w-[600px] 2xl:w-[800px] max-w-7xl items-center  font-mono text-sm text-black lg:flex shadow-2xl shadow-black ">
+        <article className="h-[900px] -z-10 top-48 right-0 justify-center  absolute  mt-36 ml-10 flex-col self-end  overflow-hidden bg-menu rounded-[4%] lg:w-[500px] xl:w-[600px] 2xl:w-[800px] max-w-7xl items-center  font-mono text-sm text-black lg:flex shadow-2xl shadow-black ">
           <Image
             width={1000}
             height={1000}
@@ -87,6 +122,7 @@ export default function Home() {
           </article>{" "}
         </article>
       </section>
+
       <Footer />
     </main>
   );

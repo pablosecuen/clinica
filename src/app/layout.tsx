@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import bg from "../assets/2x/bg2.webp";
-import Image from "next/image";
+import Footer from "./components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,14 +12,14 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Image
+      <body className={`${inter.className} bg-blue-950`}>
+        {/* <Image
           width={2200}
           height={1000}
           alt="landing"
           src={bg}
           className="w-screen object-cover fixed -z-10 h-screen"
-        ></Image>
+        ></Image> */}
         {children}
       </body>
     </html>

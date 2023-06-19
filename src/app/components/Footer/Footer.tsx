@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-white rounded-lg absolute w-full -bottom-96 shadow m-4 dark:bg-gray-800">
+    <footer className="bg-white rounded-lg absolute w-full shadow m-4 dark:bg-gray-800 -bottom-[700px]">
       <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2023{" "}
