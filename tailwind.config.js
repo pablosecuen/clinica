@@ -20,7 +20,11 @@ module.exports = {
       },
       filter: {
         "drop-shadow":
-          "drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06))",
+          "custom-shadow(0 10px 7px rgba(0, 0, 0, 1)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06))",
+        "custom-shadow2": "drop-shadow(0 4px 6px rgba(0,0,0,1))",
+        "custom-shadow3": "drop-shadow(0 7px 10px rgba(0,0,0,1))",
+        "custom-shadow4": "drop-shadow(0 10px 10px rgba(0,0,0,1))",
+        "custom-shadow5": "drop-shadow(0 20px 10px rgba(0,0,0,1))",
       },
     },
   },
